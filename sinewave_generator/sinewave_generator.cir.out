@@ -1,0 +1,47 @@
+* c:\users\lenovo\esim-workspace\sinewave_generator\sinewave_generator.cir
+
+* u1  net-_u1-pad1_ ? in net-_u1-pad4_ dff
+* u2  net-_u1-pad4_ ? in net-_u2-pad4_ dff
+* u5  net-_u2-pad4_ ? in net-_u5-pad4_ dff
+* u6  net-_u5-pad4_ ? in net-_u6-pad4_ dff
+* u9  net-_u6-pad4_ net-_u1-pad1_ d_inverter
+* u4  net-_u4-pad1_ in adc_bridge_1
+* u7  net-_u1-pad4_ net-_u2-pad4_ net-_u5-pad4_ net-_r1-pad2_ net-_r2-pad2_ net-_r3-pad2_ dac_bridge_3
+r1  out net-_r1-pad2_ 10k
+r2  out net-_r2-pad2_ 20k
+r3  out net-_r3-pad2_ 10k
+* u8  out plot_v1
+* u3  in plot_v1
+v1  net-_u4-pad1_ gnd 5v
+a1 [net-_u1-pad1_ ] [? ] [in ] [net-_u1-pad4_ ] u1
+a2 [net-_u1-pad4_ ] [? ] [in ] [net-_u2-pad4_ ] u2
+a3 [net-_u2-pad4_ ] [? ] [in ] [net-_u5-pad4_ ] u5
+a4 [net-_u5-pad4_ ] [? ] [in ] [net-_u6-pad4_ ] u6
+a5 net-_u6-pad4_ net-_u1-pad1_ u9
+a6 [net-_u4-pad1_ ] [in ] u4
+a7 [net-_u1-pad4_ net-_u2-pad4_ net-_u5-pad4_ ] [net-_r1-pad2_ net-_r2-pad2_ net-_r3-pad2_ ] u7
+* Schematic Name:                             dff, NgSpice Name: dff
+.model u1 dff(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             dff, NgSpice Name: dff
+.model u2 dff(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=2 ) 
+* Schematic Name:                             dff, NgSpice Name: dff
+.model u5 dff(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=3 ) 
+* Schematic Name:                             dff, NgSpice Name: dff
+.model u6 dff(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=4 ) 
+* Schematic Name:                             d_inverter, NgSpice Name: d_inverter
+.model u9 d_inverter(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 ) 
+* Schematic Name:                             adc_bridge_1, NgSpice Name: adc_bridge
+.model u4 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_3, NgSpice Name: dac_bridge
+.model u7 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+.tran 20e-06 20e-03 0e-03
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(out)
+plot v(in)
+.endc
+.end

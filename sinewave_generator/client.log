@@ -1,0 +1,28 @@
+Setup Client Server Connection at Wed Mar 17 16:39:37 2021
+ 
+Creating client socket 
+Client-Client Socket created successfully 
+Client- Socket Id : 1252 
+Client-Connecting to server 
+Connect- Error:Tried to connect server on port, failed...giving up 
+Setup Client Server Connection at Wed Mar 17 16:41:45 2021
+ 
+Creating client socket 
+Client-Client Socket created successfully 
+Client- Socket Id : 1240 
+Client-Connecting to server 
+Connect- Error:Tried to connect server on port, failed...giving up 
+Setup Client Server Connection at Wed Mar 17 16:46:05 2021
+ 
+Creating client socket 
+Client-Client Socket created successfully 
+Client- Socket Id : 1248 
+Client-Connecting to server 
+Connect- Error:Tried to connect server on port, failed...giving up 
+Setup Client Server Connection at Wed Mar 17 16:57:24 2021
+ 
+Creating client socket 
+Client-Client Socket created successfully 
+Client- Socket Id : 1244 
+Client-Connecting to server 
+Connect- Error:Tried to connect server on port, failed...giving up 
